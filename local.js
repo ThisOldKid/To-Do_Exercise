@@ -1,6 +1,5 @@
 const todoForm = document.getElementById("newTaskTodo");
 const todoList = document.getElementById("todoList");
-
 const savedTodos = JSON.parse(localStorage.getItem("todos")) || [];
 for (let i = 0; i < savedTodos.length; i++) {
   let newTask = document.createElement("li");
@@ -33,9 +32,8 @@ todoForm.addEventListener("submit", function(event) {
 
 todoList.addEventListener("click", function(event) {
   let targetTask = event.target;
-
-  if (targetTask === "button") {
-    event.target.parentNode.remove();
+  if (targetTask.nodeName === "BUTTON") {
+    targetTask.parentNode.remove();
   }
   if (!targetTask.isCompleted) {
     targetTask.style.textDecoration = "line-through";
